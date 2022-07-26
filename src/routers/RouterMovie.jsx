@@ -7,7 +7,7 @@ import { Tv } from "../components/Tv";
 export const RouterMovie = () => {
   return (
     <Routes>
-      <Route index element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/movies" element={<Movies />} />
       <Route path="/tv" element={<Tv />} />
       <Route path="/selected" element={<SelectionCard />} />
