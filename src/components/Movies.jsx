@@ -1,13 +1,22 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getDataMovies } from "../api/getDataMovies";
-import { getDataMoviesMore } from "../api/getDataMoviesMore";
+import React, { useEffect, useMemo, useState } from "react";
+import { useSelector } from "react-redux";
+import { useMovieStore } from "../hooks/useMovieStore";
 import { SectionCards } from "./SectionCards";
 
 export const Movies = () => {
   const { pageMovie } = useSelector((state) => state?.wmovie);
 
+  const [page, setPage] = useState(2);
+
+  const { getDataMovies } = useMovieStore();
+
   window.scrollTo(0, 0);
+
+  const handleCLick = (e) => {
+    e.preventDefault();
+    getDataMovies("movie", page);
+    setPage((page) => page + 1);
+  };
 
   return (
     <div className="movies__container">
@@ -30,7 +39,9 @@ export const Movies = () => {
         })}
       </div>
 
-      {/* <button onClick={() => handleClick()}>more</button> */}
+      <button className="btn-more" onClick={(e) => handleCLick(e)}>
+        More
+      </button>
     </div>
   );
 };

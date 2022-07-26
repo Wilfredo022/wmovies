@@ -10,6 +10,8 @@ export const wmovies = createSlice({
     pageTv: [],
     activeFilm: null,
     filmData: null,
+    filmDataCredits: null,
+    filmDataTrailer: null,
   },
   reducers: {
     onTrending: (state, { payload }) => {
@@ -50,10 +52,23 @@ export const wmovies = createSlice({
       state.isLoading = true;
       state.activeFilm = payload;
       state.isLoading = false;
+      state.filmData = null;
+      state.filmDataCredits = null;
+      state.filmDataTrailer = null;
     },
     activeFilmData: (state, { payload }) => {
       state.isLoading = true;
       state.filmData = payload;
+      state.isLoading = false;
+    },
+    activeFilmDataCredits: (state, { payload }) => {
+      state.isLoading = true;
+      state.filmDataCredits = payload;
+      state.isLoading = false;
+    },
+    activeFilmDataTrailer: (state, { payload }) => {
+      state.isLoading = true;
+      state.filmDataTrailer = payload;
       state.isLoading = false;
     },
   },
@@ -66,4 +81,6 @@ export const {
   onPageTv,
   onActiveFilm,
   activeFilmData,
+  activeFilmDataCredits,
+  activeFilmDataTrailer,
 } = wmovies.actions;

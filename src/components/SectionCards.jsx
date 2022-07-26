@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { onActiveFilm } from "../store/wmovies/wmovies";
 
 export const SectionCards = ({ card, title }) => {
+  window.scrollTo(0, 0);
+
   const {
     media_type,
     original_name,

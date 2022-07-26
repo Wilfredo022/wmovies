@@ -1,12 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getDataMovies } from "../api/getDataMovies";
+import { useMovieStore } from "../hooks/useMovieStore";
 import { SectionCards } from "./SectionCards";
 
 export const Tv = () => {
   const { pageTv } = useSelector((state) => state.wmovie);
 
+  const [NumPage, setNumPage] = useState(2);
+
+  const { getDataMovies } = useMovieStore();
+
   window.scrollTo(0, 0);
+
+  const handleCLick = (e) => {
+    e.preventDefault();
+    getDataMovies("tv", NumPage);
+    setNumPage((NumPage) => NumPage + 1);
+  };
 
   return (
     <div className="movies__container">
@@ -27,6 +37,10 @@ export const Tv = () => {
           return <SectionCards key={card.id} card={card} />;
         })}
       </div>
+
+      <button className="btn-more" onClick={(e) => handleCLick(e)}>
+        More
+      </button>
     </div>
   );
 };

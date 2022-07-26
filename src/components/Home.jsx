@@ -5,7 +5,7 @@ import { numRandom } from "../helpers/numRandom";
 import { SectionCards } from "./SectionCards";
 
 export const Home = () => {
-  const { trending, tv, isLoading } = useSelector((state) => state.wmovie);
+  const { trending, tv, isLoading } = useSelector((state) => state?.wmovie);
 
   window.scrollTo(0, 0);
 
