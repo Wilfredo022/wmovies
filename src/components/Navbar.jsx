@@ -9,7 +9,7 @@ export const Navbar = () => {
       </div>
 
       <div className="navbar__links">
-        <NavLink to="/">
+        <NavLink to="/wmovies/*">
           <i className="fas fa-home"></i>
           <span>Home</span>
         </NavLink>
