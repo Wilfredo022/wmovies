@@ -40,6 +40,12 @@
 
 @include mobile {
   .navbar__links {
+    a {
+      i {
+        font-size: 2rem;
+        margin-right: 0px;
+      }
+    }
     span {
       display: none;
     }

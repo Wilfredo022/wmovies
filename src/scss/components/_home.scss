@@ -25,6 +25,18 @@
   z-index: -1;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* margin-top: 5rem; */
+  font-size: 2rem;
+  text-align: center;
+  color: $main-color;
+  font-weight: bold;
+}
+
 .home__info {
   width: 40%;
   padding: 1rem;
@@ -95,6 +107,7 @@
   align-items: center;
   justify-content: start;
   overflow-x: scroll;
+  overflow-y: hidden;
   margin-bottom: 1rem;
 
   &::-webkit-scrollbar {
@@ -159,7 +172,7 @@
   margin: 0.3rem;
   padding-bottom: 0.3rem;
   margin-bottom: 0.5rem;
-  height: 300px;
+  height: 280px;
   padding-left: 0.3rem;
 
   .home__sectionCard-img {
@@ -180,5 +193,11 @@
   p {
     font-size: 1rem;
     padding: 0.5rem;
+  }
+}
+
+@include mobile {
+  .home__sectionCard-card p {
+    font-size: 1.1rem;
   }
 }

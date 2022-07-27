@@ -1,16 +1,21 @@
-import { useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import apiConfig from "../api/apiConfig";
 import { numRandom } from "../helpers/numRandom";
+import { onActiveFilm } from "../store/wmovies/wmovies";
 import { SectionCards } from "./SectionCards";
 
 export const Home = () => {
   const { trending, tv, isLoading } = useSelector((state) => state?.wmovie);
 
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   window.scrollTo(0, 0);
 
   if (trending == null && isLoading) {
-    return;
+    return <div className="loading">Loading...</div>;
   }
 
   const num = numRandom(4, 7);
@@ -28,6 +33,12 @@ export const Home = () => {
     backgroundImage: `url("${background}")`,
   };
 
+  const handleClick = () => {
+    dispatch(onActiveFilm(trending[num]));
+
+    navigate("/selected", { replace: true });
+  };
+
   return (
     <div>
       <div className="home__hero" style={myStyle}>
@@ -35,7 +46,7 @@ export const Home = () => {
           <h1>{title}</h1>
           <p>{overview}</p>
 
-          <button>Watch now</button>
+          <button onClick={handleClick}>Watch now</button>
         </div>
 
         <div className="home__card">

@@ -8,6 +8,7 @@ export const wmovies = createSlice({
     tv: null,
     pageMovie: [],
     pageTv: [],
+    dataSearch: [],
     activeFilm: null,
     filmData: null,
     filmDataCredits: null,
@@ -55,6 +56,7 @@ export const wmovies = createSlice({
       state.filmData = null;
       state.filmDataCredits = null;
       state.filmDataTrailer = null;
+      state.dataSearch = null;
     },
     activeFilmData: (state, { payload }) => {
       state.isLoading = true;
@@ -71,6 +73,11 @@ export const wmovies = createSlice({
       state.filmDataTrailer = payload;
       state.isLoading = false;
     },
+    onSearch: (state, { payload }) => {
+      state.isLoading = true;
+      state.dataSearch = payload;
+      state.isLoading = false;
+    },
   },
 });
 
@@ -83,4 +90,5 @@ export const {
   activeFilmData,
   activeFilmDataCredits,
   activeFilmDataTrailer,
+  onSearch,
 } = wmovies.actions;

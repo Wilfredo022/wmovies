@@ -30,9 +30,13 @@ export const SelectionCard = () => {
     getDataIdVideos(id, media_type);
   }, [id, media_type]);
 
-  const { filmData, filmDataCredits, filmDataTrailer } = useSelector(
+  const { filmData, filmDataCredits, filmDataTrailer, isLoading } = useSelector(
     (state) => state?.wmovie
   );
+
+  if (isLoading) {
+    return <div className="loading">Loading...</div>;
+  }
 
   if (
     filmData === null ||

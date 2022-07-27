@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import apiConfig from "../api/apiConfig";
 import {
   activeFilmData,
@@ -7,6 +6,7 @@ import {
   activeFilmDataTrailer,
   onPageMovie,
   onPageTv,
+  onSearch,
   onTrending,
   onTv,
 } from "../store/wmovies";
@@ -63,6 +63,7 @@ export const useMovieStore = () => {
     }
   };
 
+  //det data for id
   const getDataId = async (id, media) => {
     try {
       const res = await fetch(
@@ -77,9 +78,8 @@ export const useMovieStore = () => {
     }
   };
 
+  //search credits
   const getDataIdCredits = async (id, media) => {
-    //https://api.themoviedb.org/3/movie/718789/credits?api_key=c61d3fbfafe75c1c1e9c9afe0ba19eb3&language=en-US
-
     try {
       const res = await fetch(
         `${baseUrl}${media}/${id}/credits?api_key=${apiKey}&language=en-US`
@@ -92,9 +92,8 @@ export const useMovieStore = () => {
     }
   };
 
+  //search trailers
   const getDataIdVideos = async (id, media) => {
-    //https://api.themoviedb.org/3/movie/718789/credits?api_key=c61d3fbfafe75c1c1e9c9afe0ba19eb3&language=en-US
-
     try {
       const res = await fetch(
         `${baseUrl}${media}/${id}/videos?api_key=${apiKey}&language=en-US`
@@ -109,13 +108,35 @@ export const useMovieStore = () => {
     }
   };
 
+  //todo: en proceso
+  const searchData = async (name, media) => {
+    //https://api.themoviedb.org/3/search/movie?api_key=c61d3fbfafe75c1c1e9c9afe0ba19eb3&language=en-US&query=raya&page=1&include_adult=false
+
+    try {
+      const res = await fetch(
+        `${baseUrl}search/${media}?api_key=${apiKey}&language=en-US&query=${name}&page=1&include_adult=false`
+      );
+
+      const result = await res.json();
+
+      const data = await result.results.map((i) => ({
+        ...i,
+        media_type: media,
+      }));
+
+      dispatch(onSearch(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return {
-    //propiedades
     //metodos
     getDataTrending,
     getDataMovies,
     getDataId,
     getDataIdCredits,
     getDataIdVideos,
+    searchData,
   };
 };
