@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import apiConfig from "../api/apiConfig";
-import { numRandom } from "../helpers/numRandom";
 import { onActiveFilm } from "../store/wmovies/wmovies";
 import { SectionCards } from "./SectionCards";
 
@@ -18,9 +17,7 @@ export const Home = () => {
     return <div className="loading">Loading...</div>;
   }
 
-  const num = numRandom(4, 7);
-
-  const { title, poster_path, backdrop_path, id, overview } = trending[num];
+  const { title, poster_path, backdrop_path, id, overview } = trending[0];
 
   if (title === undefined || title === null || poster_path === undefined) {
     return;
@@ -34,7 +31,7 @@ export const Home = () => {
   };
 
   const handleClick = () => {
-    dispatch(onActiveFilm(trending[num]));
+    dispatch(onActiveFilm(trending[0]));
 
     navigate("/selected", { replace: true });
   };

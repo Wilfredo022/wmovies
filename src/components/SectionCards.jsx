@@ -31,8 +31,8 @@ export const SectionCards = ({ card, title }) => {
   };
 
   return (
-    <div className="home__sectionCard-card">
-      <div className="home__sectionCard-img">
+    <div className="movie__sectionCard-card">
+      <div className="movie__sectionCard-img">
         <img
           onClick={() => handleClickImage(data)}
           src={apiConfig.w500Image(poster_path)}

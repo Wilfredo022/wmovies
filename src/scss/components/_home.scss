@@ -106,7 +106,7 @@
   display: flex;
   align-items: center;
   justify-content: start;
-  overflow-x: scroll;
+  overflow-x: overlay;
   overflow-y: hidden;
   margin-bottom: 1rem;
 
@@ -167,15 +167,15 @@
   }
 }
 
-.home__sectionCard-card {
+.movie__sectionCard-card {
   display: block;
   margin: 0.3rem;
   padding-bottom: 0.3rem;
   margin-bottom: 0.5rem;
-  height: 280px;
+  height: 250px;
   padding-left: 0.3rem;
 
-  .home__sectionCard-img {
+  .movie__sectionCard-img {
     width: 150px !important;
     height: 200px !important;
     margin-bottom: 1rem;
@@ -199,5 +199,119 @@
 @include mobile {
   .home__sectionCard-card p {
     font-size: 1.1rem;
+  }
+}
+
+@include tablet {
+  .home__hero {
+    display: flex;
+    flex-direction: column !important;
+
+    .home__info {
+      width: 80%;
+      h1 {
+        font-size: 4rem;
+      }
+
+      p {
+        font-size: 2rem;
+        width: 100%;
+      }
+
+      button {
+        font-size: 3rem;
+        padding: 1rem 3rem;
+      }
+    }
+
+    .home__card {
+      width: 400px;
+      height: 500px;
+    }
+  }
+
+  .home__section-container {
+    .home__section-title {
+      margin-top: 2rem;
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      button {
+        font-size: 2rem;
+        padding: 0.8rem 2rem;
+      }
+    }
+
+    .home__section-cards {
+      .movie__sectionCard-card {
+        height: 400px;
+
+        .movie__sectionCard-img {
+          width: 250px !important;
+          height: 300px !important;
+        }
+        p {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+@include laptop {
+  .home__hero {
+    display: flex;
+    flex-direction: row !important;
+
+    .home__info {
+      width: 40%;
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.3rem;
+        width: 100%;
+      }
+
+      button {
+        font-size: 1.2rem;
+        padding: 1rem 1.2rem;
+      }
+    }
+
+    .home__card {
+      width: 250px;
+      height: 300px;
+    }
+  }
+
+  .home__section-container {
+    .home__section-title {
+      margin-top: 2rem;
+      h1 {
+        font-size: 2rem;
+      }
+
+      button {
+        font-size: 1.1rem;
+        padding: 0.8rem 1.1rem;
+        border-radius: 30px;
+      }
+    }
+
+    .home__section-cards {
+      .movie__sectionCard-card {
+        height: 340px;
+
+        .movie__sectionCard-img {
+          width: 200px !important;
+          height: 250px !important;
+        }
+        p {
+          font-size: 1.1rem;
+        }
+      }
+    }
   }
 }
